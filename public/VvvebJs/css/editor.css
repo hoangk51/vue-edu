@@ -9700,7 +9700,8 @@ body {
 
 #vvveb-builder #select-actions, #vvveb-builder #wysiwyg-editor {
   position: absolute;
-  right: -1px;
+/*  right: -1px;
+*/ 
   top: -25px;
   background: #4285f4;
   color: #fff;
@@ -10182,3 +10183,33 @@ ul.autocomplete li.selected {
   padding-right: 0rem; }
 
 /*# sourceMappingURL=editor.css.map */
+
+.tiles-menu-option {
+    width: 140px;
+    height: 80px;
+    background-color: #fff;
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    opacity: .9;
+    box-shadow: 0 0 15px rgb(0 0 0 / 20%);
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid transparent;
+    background-origin: content-box;
+    background-clip: content-box;
+    cursor: pointer;
+}
+.-tiles-menu {
+    padding: 0;
+    margin: 0;
+    width: 280px;
+    font-size: 0;
+    list-style-type: none;
+}
+.-tiles-menu-wrapper {
+    position: absolute;
+    top: 32px;
+    left: 6px;
+}

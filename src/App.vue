@@ -12,6 +12,8 @@
     </main>
     <Footer />
     <Tool v-if="isShowTool" />
+    <Sectiontool v-if="isShowSectiontool" />
+
   </div>
 </template>
 
@@ -24,6 +26,9 @@ import Type2 from "./components/section/Type2.vue";
 import Type4 from "./components/section/Type4.vue";
 
 import Tool from "./components/Tool.vue";
+import Sectiontool from "./components/Sectiontool.vue";
+
+
 import store from "./store.js";
 //import { mapState } from 'vuex'
 
@@ -36,7 +41,8 @@ export default {
     Type1,
     Type2,
     Type4,
-    Tool
+    Tool,
+    Sectiontool
   },
   mounted() {
     this.$store.dispatch("loadData");
@@ -59,7 +65,10 @@ export default {
     },
     isShowTool() {
       return store.state.tool.showTool == true;
-    }
+    },
+    isShowSectiontool() {
+      return store.state.tool.showSectiontool == true;
+    },
   },
   methods: {
     loadData() {

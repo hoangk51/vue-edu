@@ -107,6 +107,7 @@
          </div>
       </div>
    </div>
+   <!--
    <div id="right-panel"><div class="component-properties"><ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist"><li class="nav-item content-tab">
                <a class="nav-link show" data-toggle="tab" href="#content-tab" role="tab" aria-controls="components" aria-selected="false">
                   <i class="la la-lg la-cube"></i>
@@ -696,16 +697,18 @@
          </div>
       </div>
    </div>
+   -->
 </div>
 </template>
 
 <script>
 import store from '../store.js'
 import { mapGetters } from 'vuex'
+/*
 import SelectBox from "@/components/input/SelectBox.vue";
 import TextInput from "@/components/input/TextInput.vue";
 import Color from "@/components/input/Color.vue";
-
+*/
 export default {
   name: 'Tool',
 
@@ -717,7 +720,7 @@ export default {
   },
   props:['section'],
   components: {
-    SelectBox,TextInput,Color
+   // SelectBox,TextInput,Color
   },
   computed: {
      ...mapGetters({
@@ -736,7 +739,13 @@ export default {
                   {name:'fontWeight',type:'TextInput'},
                    {name:'fontSize',type:'TextInput'},
                   ]
+      //console.log(store.state)
+       //let isSection = store.state.tool.isSection
+       //console.log(isSection)
+      // if(isSection == 1) return arr
+       console.log(33333333)
       let style = store.state.tool.currentNode.target.style
+
        var rgbToHex = function (color) {
           //console.log('color:'+color)
          // if (!color) return "";
@@ -791,7 +800,7 @@ export default {
          color: 'red',
         // fontSize: '13px'
        }
-       //console.log(style)
+       console.log(style)
 
        return style
     }

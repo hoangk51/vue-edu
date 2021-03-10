@@ -5,7 +5,16 @@ const state = {
    sections:[],
     currentNode:{},
     showTool:false,
+    showSectiontool:false,
+    isSection:false,
     selectBox:{
+      display:'none',
+      top:160,
+      left:2,
+      width:2,
+      height:2,
+    },
+    sectionBox:{
       display:'none',
       top:160,
       left:2,
@@ -28,18 +37,43 @@ const state = {
       },
  };
  const mutations = {
-    CLICKS   (state,e ) {
-     // console.log('abc')
-        state.showTool = true,
-        console.log(state.showTool)
-        state.selectBox.display= 'block';
-        let rect = e.target.getBoundingClientRect();
-        console.log(rect)
-        state.selectBox.top = rect.top;
-        state.selectBox.left = rect.left;
-        state.selectBox.width = rect.width;
-        state.selectBox.height = rect.height;
-        console.log(state.selectBox)
+    CLICKS   (state,data ) {
+      let e = data.e;
+      //let x=data.data;
+       // console.log(data);
+       // console.log(state.showTool)
+        state.isSection = data.isSection ;
+
+        state.showSectiontool = true;
+        var search = "[data-section='"+data.data.sectionId+"']";
+         console.log(search);
+      let parent =  document.querySelector(search);
+      console.log(parent);
+       let parentRect =  parent.getBoundingClientRect();
+       state.sectionBox.top = parentRect.top;
+        state.sectionBox.left = parentRect.left;
+        state.sectionBox.width = parentRect.width;
+        state.sectionBox.height = parentRect.height;
+         state.sectionBox.display= 'block';
+
+       console.log('----');
+       console.log(parentRect.width);
+       console.log(parentRect.top);
+        console.log('----');
+        if(data.isSection == 1){
+          let rect = e.getBoundingClientRect();
+          console.log(rect)
+        }else{
+          state.showTool = true,
+          state.selectBox.display= 'block';
+          let rect = e.target.getBoundingClientRect();
+         // console.log(rect)
+          state.selectBox.top = rect.top;
+          state.selectBox.left = rect.left;
+          state.selectBox.width = rect.width;
+          state.selectBox.height = rect.height;
+        }
+      // console.log(state.selectBox)
         state.currentNode = e
 
          },

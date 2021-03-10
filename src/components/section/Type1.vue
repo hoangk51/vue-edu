@@ -1,5 +1,5 @@
 <template>
-  <section class="product-showcase mb-half">
+  <section class="product-showcase mb-half section" data-section=34455>
     <div class="container">
       <div class="row">
         <!-- New Product Start Here -->

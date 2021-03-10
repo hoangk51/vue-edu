@@ -68,8 +68,26 @@ new Vue({
        // console.log(e.target.style.marginTop);
        // console.log(e.target.tagName);
        e.target.setAttribute('contenteditable',true)
-     //  this.$store.commit('CLICKS',e)
-      })
+
+   /* var editAble = e.target.getAttribute('data-editAble')
+  
+    var data;
+    let parent = e.target.closest(".section");
+       var  sectionId=parent.getAttribute('data-section')
+    if(editAble == 'true') {
+             console.log(e)
+       data = {'e':e,'isSection':0,'data':{'sectionId':sectionId}} ;
+    }
+    else{
+       data ={'e':e,'isSection':1,'data':{'sectionId':sectionId}}
+    }
+    this.$store.commit('CLICKS',data)
+     console.log(e.target.id)
+     e.target.addEventListener('input', function () {
+          console.log('11111111');
+
+      });*/
+    })
     document.addEventListener("mouseup", e => {
 
 
@@ -94,7 +112,22 @@ new Vue({
      // console.log(e.target.style.marginTop);
      // console.log(e.target.tagName);
     // console.log(editAble)
-    if(editAble == 'true') this.$store.commit('CLICKS',e)
+    var data;
+    let parent = e.target.closest(".section");
+       var  sectionId=parent.getAttribute('data-section')
+    if(editAble == 'true') {
+             console.log(e)
+
+       data = {'e':e,'isSection':0,'data':{'sectionId':sectionId}} ;
+    }
+    else{
+       //var element = document.querySelector("[data-section='"+id+"']");
+      // console.log(element)
+       data ={'e':e,'isSection':1,'data':{'sectionId':sectionId}}
+    }
+
+
+    this.$store.commit('CLICKS',data)
      console.log(e.target.id)
  //    e.target.setAttribute('id','editor');
      e.target.addEventListener('input', function () {
