@@ -1,6 +1,6 @@
 <template>
   <!-- Latest Blog Start Here -->
-        <div class="latest-blog mb-45">
+        <div class="latest-blog mb-45" v-bind:data-section="section.sectionId">
             <div class="container">
                  <component
                 v-bind:is="section.widgets[1].name"  :setting=section.widgets[1].setting >

@@ -1,6 +1,6 @@
 <template>
 
-<div class="categories-item carousel-style-two  pb-45">
+<div class="categories-item carousel-style-two  pb-45" v-bind:data-section="section.sectionId">
             <div class="container">
                 <div class="row">
                     <!-- New Product Start Here -->

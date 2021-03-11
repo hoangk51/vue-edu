@@ -28,8 +28,8 @@ justify-content: center;">
                <div id="select-actions">
                   <a id="drag-btn" href="" title="Drag element"><i class="la la-arrows"></i></a>
                   <a id="parent-btn" href="" title="Select parent"><i class="la la-level-down la-rotate-180"></i></a>
-                  <a id="up-btn" href="" title="Move element up"><i class="la la-arrow-up"></i></a>
-                  <a id="down-btn" href="" title="Move element down"><i class="la la-arrow-down"></i></a>
+                  <a id="up-btn" href="" title="Move element up"  @click="up"><i class="la la-arrow-up"></i></a>
+                  <a id="down-btn" href="" title="Move element down" @click="down"><i class="la la-arrow-down"></i></a>
                   <a id="clone-btn" href="" title="Clone element"><i class="la la-copy"></i></a>
                   <a id="delete-btn" href="" title="Remove element"><i class="la la-trash"></i></a>
                   <div class="-tiles-menu-wrapper js-magic-sections-wrapper" style="display: block;"><ul class="-tiles-menu" style="width: 560px;"><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses1.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses2.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses3.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses4.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses5.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses6.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses11.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses9.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses10.jpg&quot;);"></li><li class="tiles-menu-option into-page" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses12.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses13.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses14.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses15.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses16.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses17.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses18.jpg&quot;);"></li><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses19.jpg&quot;);"></li></ul></div>
@@ -223,6 +223,15 @@ export default {
     }
   },
   methods: {
+    up: function(){
+        store.commit('up',{})
+
+    },
+    down: function(){
+        store.commit('down',{})
+
+    },
+      
   }
 }
 </script>
