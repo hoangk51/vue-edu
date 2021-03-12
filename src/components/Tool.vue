@@ -26,88 +26,11 @@
                   <a id="delete-btn" href="" title="Remove element"><i class="la la-trash"></i></a>
                </div>
             </div>
-            <!-- add section box -->
-            <div id="add-section-box" class="drag-elements">
-               <div class="header">
-                  <ul class="nav nav-tabs" id="box-elements-tabs" role="tablist">
-                     <li class="nav-item component-tab">
-                        <a class="nav-link active" id="box-components-tab" data-toggle="tab" href="#box-components" role="tab" aria-controls="components" aria-selected="true">
-                           <i class="la la-lg la-cube"></i>
-                           <div><small>Components</small></div>
-                        </a>
-                     </li>
-                     <li class="nav-item blocks-tab">
-                        <a class="nav-link" id="box-blocks-tab" data-toggle="tab" href="#box-blocks" role="tab" aria-controls="blocks" aria-selected="false">
-                           <i class="la la-lg la-image"></i>
-                           <div><small>Blocks</small></div>
-                        </a>
-                     </li>
-                     <li class="nav-item component-properties-tab" style="display:none">
-                        <a class="nav-link" id="box-properties-tab" data-toggle="tab" href="#box-properties" role="tab" aria-controls="blocks" aria-selected="false">
-                           <i class="la la-lg la-cog"></i>
-                           <div><small>Properties</small></div>
-                        </a>
-                     </li>
-                  </ul>
-                  <div class="section-box-actions">
-                     <div id="close-section-btn" class="btn btn-light btn-sm bg-white btn-sm float-right"><i class="la la-close"></i></div>
-                     <div class="small mt-1 mr-3 float-right">
-                        <div class="custom-control custom-radio custom-control-inline">
-                           <input type="radio" id="add-section-insert-mode-after" value="after" checked="checked" name="add-section-insert-mode" class="custom-control-input">
-                           <label class="custom-control-label" for="add-section-insert-mode-after">After</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                           <input type="radio" id="add-section-insert-mode-inside" value="inside" name="add-section-insert-mode" class="custom-control-input">
-                           <label class="custom-control-label" for="add-section-insert-mode-inside">Inside</label>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="tab-content">
-                     <div class="tab-pane fade show active" id="box-components" role="tabpanel" aria-labelledby="components-tab">
-                        <div class="search">
-                           <input class="form-control form-control-sm component-search" placeholder="Search components" type="text" data-vvveb-action="addBoxComponentSearch" data-vvveb-on="keyup">
-                           <button class="clear-backspace"  data-vvveb-action="clearComponentSearch">
-                           <i class="la la-close"></i>
-                           </button>
-                        </div>
-                        <div>
-                           <div>
-                              <ul class="components-list clearfix" data-type="addbox">
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="tab-pane fade" id="box-blocks" role="tabpanel" aria-labelledby="blocks-tab">
-                        <div class="search">
-                           <input class="form-control form-control-sm block-search" placeholder="Search blocks" type="text" data-vvveb-action="addBoxBlockSearch" data-vvveb-on="keyup">
-                           <button class="clear-backspace"  data-vvveb-action="clearBlockSearch">
-                           <i class="la la-close"></i>
-                           </button>
-                        </div>
-                        <div>
-                           <div>
-                              <ul class="blocks-list clearfix"  data-type="addbox">
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- div class="tab-pane fade" id="box-properties" role="tabpanel" aria-labelledby="blocks-tab">
-                        <div class="component-properties-sidepane">
-                            <div>
-                                <div class="component-properties">
-                                    <div class="mt-4 text-center">Click on an element to edit.</div>
-                                </div>
-                            </div>
-                        </div>
-                        </div -->
-                  </div>
-               </div>
-            </div>
-            <!-- //add section box -->
+           
          </div>
       </div>
    </div>
-   <!--
+  
    <div id="right-panel"><div class="component-properties"><ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist"><li class="nav-item content-tab">
                <a class="nav-link show" data-toggle="tab" href="#content-tab" role="tab" aria-controls="components" aria-selected="false">
                   <i class="la la-lg la-cube"></i>
@@ -697,7 +620,7 @@
          </div>
       </div>
    </div>
-   -->
+   
 </div>
 </template>
 

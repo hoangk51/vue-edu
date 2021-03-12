@@ -9758,7 +9758,7 @@ body {
   min-width: 500px;
   max-width: 800px;
   pointer-events: auto;
-  display: none;
+  /*display: none;*/
   background: #fff; }
 
 #vvveb-builder #highlight-name {

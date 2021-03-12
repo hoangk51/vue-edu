@@ -114,9 +114,67 @@ const state = {
     updateSections(state, sections) {
       state.sections = sections
     },
+    addSection(state,data) {console.log(data.sectionId);
+      let sectionData = {"sectionId":1,
+      "name": "Support",
+      "type": "Type1",
+      "widgets": {
+        "1": {
+          "id": 1,
+          "name": "Support",
+          "setting": {
+            "title": "Mon - Fri / 8:00 - 18:00",
+            "description": "Working Days/Hours!",
+            "icon": "pe-7s-alarm"
+          }
+        },
+        "2": {
+          "id": 1,
+          "name": "support",
+          "setting": {
+            "title": "bai viet 1",
+            "description": "des 1",
+            "icon": "pe-7s-car"
+          }
+        },
+        "3": {
+          "id": 1,
+          "name": "support",
+          "setting": {
+            "title": "Support@posthemes.com",
+            "description": "Orders Support!",
+            "icon": "pe-7s-mail-open-file"
+          }
+        }
+      },
+      "attrs": {
+        "type": 1,
+        "content": "xyz",
+        "text1": "aaaaaaaaaaa",
+        "text2": "bbbbbbbb",
+        "text3": "cccccccccc",
+        "backgroundColor": "#fff",
+        "color": "#ea4848"
+      }
+    }
+    var index
+     let sections = state.sections
+    sections.forEach(function(p,i){
+        if(i == state.currentSectionId){
+        index = state.sections.indexOf(p) + 1;
+        /* const preIndex = index - 1;
+         Vue.set( state.sections,index, state.sections[preIndex] )
+         Vue.set( state.sections,preIndex, p )*/
+        }
+     });
+     sections.splice(index, 0, sectionData);
+      Vue.set( state,'sections', sections )
+
+      console.log(state.sections);
+    },
     up(state) {
-      state.sections.forEach(function(p){
-        if(p.sectionId == state.currentSectionId){
+      state.sections.forEach(function(p,i){
+        if(i == state.currentSectionId){
         const index = state.sections.indexOf(p);
         const preIndex = index - 1;
          Vue.set( state.sections,index, state.sections[preIndex] )
@@ -130,8 +188,8 @@ const state = {
      // console.log(state.currentSectionId);
      var index
       let sections = state.sections
-      sections.forEach(function(p){
-        if(p.sectionId == state.currentSectionId){
+      sections.forEach(function(p,i){
+        if(i == state.currentSectionId){
           
         index = state.sections.indexOf(p);//console.log(index);
        //const nextIndex = index + 1;
@@ -380,7 +438,7 @@ const state = {
         "content": "abc",
         "backgroundColor": "#ea4848"
       }
-    }
+    },
   ]
 };
 commit('updateSections',data.widgets)

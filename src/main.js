@@ -69,7 +69,7 @@ new Vue({
        // console.log(e.target.tagName);
        e.target.setAttribute('contenteditable',true)
 
-   /* var editAble = e.target.getAttribute('data-editAble')
+    var editAble = e.target.getAttribute('data-editAble')
   
     var data;
     let parent = e.target.closest(".section");
@@ -83,8 +83,7 @@ new Vue({
     }
     this.$store.commit('CLICKS',data)
      console.log(e.target.id)
-     e.target.addEventListener('input', function () {
-          console.log('11111111');
+     /*e.target.addEventListener('input', function () {
 
       });*/
     })

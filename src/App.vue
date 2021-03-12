@@ -1,19 +1,18 @@
 <template>
   <div>
-    <Header />
-    <main id="content" class="main-content-wrapper">
-      <component
-        v-for="(section,i) in sections"
-        :sectionIndex="i"
-        :key="'A'+ i"
-        v-bind:is="section.type"
-        :section="section"
-      ></component>
-    </main>
-    <Footer />
-    <Tool v-if="isShowTool" />
-    <Sectiontool v-if="isShowSectiontool" />
-
+        <Header />
+        <main id="content" class="main-content-wrapper">
+          <component
+            v-for="(section,i) in sections"
+            :sectionIndex="i"
+            :key="'A'+ i"
+            v-bind:is="section.type"
+            :section="section"
+          ></component>
+        </main>
+        <Footer />
+      <Tool v-if="isShowTool" />
+      <Sectiontool v-if="isShowSectiontool" />
   </div>
 </template>
 

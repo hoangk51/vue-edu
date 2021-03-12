@@ -1,5 +1,5 @@
 <template>
-  <section class="product-showcase mb-half section"  v-bind:data-section="section.sectionId">
+  <section class="product-showcase mb-half section"  v-bind:data-section="sectionIndex">
     <div class="container">
       <div class="row">
         <!-- New Product Start Here -->
