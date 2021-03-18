@@ -24,8 +24,8 @@
                   <a id="parent-btn" href="" title="Select parent"><i class="la la-level-down la-rotate-180"></i></a>
                   <a id="up-btn" href="" title="Move element up"  @click="up"><i class="la la-arrow-up"></i></a>
                   <a id="down-btn" href="" title="Move element down" @click="down"><i class="la la-arrow-down"></i></a>
-                  <a id="clone-btn" href="" title="Clone element"   ><i class="la la-copy"></i></a>
-                  <a id="delete-btn" href="" title="Remove element"><i class="la la-trash"></i></a>
+                  <a id="clone-btn" href="" title="Clone element" @click="addSection"   ><i class="la la-copy"></i></a>
+                  <a id="delete-btn" href="" title="Remove element" @click="deleteSection"><i class="la la-trash"></i></a>
                   <!--
                   <div class="-tiles-menu-wrapper js-magic-sections-wrapper" style="display: block;">
                   <ul class="-tiles-menu" style="width: 560px;"><li class="tiles-menu-option" style="background-image: url(&quot;https://cdn.mycourse.app/pbl3h/author/images/pagesbuilder/courses1.jpg&quot;);"></li>
@@ -95,10 +95,11 @@
                   Bootstrap 5<div class="header-arrow"></div>
                </label>
                <input class="header_check" type="checkbox" checked="true" id="addbox_comphead_Bootstrap 52">
-               <ol><li data-section="Bootstrap 5" data-drag-type="component" data-type="html/container" data-search="container" style="background-image: url(&quot;https://www.vvveb.com/vvvebjs/libs/builder/icons/container.svg&quot;); background-repeat: no-repeat;">
-                     <a href="#">Container</a>
-                  </li><li data-section="Bootstrap 5" data-drag-type="component" data-type="html/gridrow" data-search="grid row" style="background-image: url(&quot;https://www.vvveb.com/vvvebjs/libs/builder/icons/grid_row.svg&quot;); background-repeat: no-repeat;">
-                     <a href="#">Grid Row</a>
+               <ol>
+                  <li v-on:click="addSection(5)" data-section="Bootstrap 5" data-drag-type="component" data-type="html/container" data-search="container" style="background-image: url(&quot;https://www.vvveb.com/vvvebjs/libs/builder/icons/container.svg&quot;); background-repeat: no-repeat;">
+                     <a href="#" >Container</a>
+                  </li><li  v-on:click="addSection(6)" data-section="Bootstrap 5" data-drag-type="component" data-type="html/gridrow" data-search="grid row" style="background-image: url(&quot;https://www.vvveb.com/vvvebjs/libs/builder/icons/grid_row.svg&quot;); background-repeat: no-repeat;">
+                     <a href="#" >Grid Row</a>
                   </li><li data-section="Bootstrap 5" data-drag-type="component" data-type="html/button" data-search="html button" style="background-image: url(&quot;https://www.vvveb.com/vvvebjs/libs/builder/icons/button.svg&quot;); background-repeat: no-repeat;">
                      <a href="#">Html Button</a>
                   </li><li data-section="Bootstrap 5" data-drag-type="component" data-type="html/buttongroup" data-search="button group" style="background-image: url(&quot;https://www.vvveb.com/vvvebjs/libs/builder/icons/button_group.svg&quot;); background-repeat: no-repeat;">
@@ -303,13 +304,17 @@ export default {
          color: 'red',
         // fontSize: '13px'
        }
-      console.log(333444)
-       console.log(style)
+      //console.log(333444)
+       //console.log(style)
 
        return style
     }
   },
   methods: {
+   deleteSection: function(){
+        store.commit('deleteSection',{})
+
+    },
     up: function(){
         store.commit('up',{})
 
@@ -318,13 +323,13 @@ export default {
         store.commit('down',{})
 
     },
-     addSection: function(sectionId){console.log('addSectionaaaa'+sectionId);
+     addSection: function(sectionId){console.log('addSectionaaaa');
         store.commit('addSection',{'sectionId':sectionId})
 
     },
 
     addSectionView: function(){
-    console.log('addSectionView');
+    //console.log('addSectionView');
            this.showModal = true;
     },
   }

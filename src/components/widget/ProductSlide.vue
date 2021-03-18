@@ -68,18 +68,18 @@ export default {
     }
   },
    beforeUpdate() {
-    console.log('beforeUpdate') // Logs the counter value every second, before the DOM updates.
+   // console.log('beforeUpdate') // Logs the counter value every second, before the DOM updates.
   },
 
   created() {
-    console.log(666)
+//    console.log(666)
   },
 
   computed: {
       cssH2() {
       let css = this.$props.css.h2;
-       console.log('computed');
-       console.log(css);
+       //console.log('computed');
+      // console.log(css);
       let newCss={}
       let list = ['backgroundColor','color','fontSize','fontWeight','marginTop','marginBottom','marginRight','marginLeft']
        list.forEach(function (property) {
@@ -91,14 +91,14 @@ export default {
          }
 
        })
-      console.log(newCss);
+      //console.log(newCss);
       return newCss;
     },
 
     cssH2Text(){
       let css = this.$props.css.h2Text;
-       console.log('computed');
-       console.log(css);
+       //console.log('computed');
+       //console.log(css);
       let newCss={}
       let list = ['color','fontWeight','fontSize']
        list.forEach(function (property) {
@@ -110,7 +110,7 @@ export default {
          }
 
        })
-      console.log(newCss);
+      //console.log(newCss);
       return newCss;
     },
   }

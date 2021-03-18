@@ -38,6 +38,20 @@ const state = {
       },
  };
  const mutations = {
+    hover   (state,data ) {
+        state.isSection = data.isSection ;
+        state.showSectiontool = true;
+        state.currentSectionId = data.sectionId ;
+        var search = "[data-section='"+data.sectionId+"']";
+         console.log(search);
+      let parent =  document.querySelector(search);
+       let parentRect =  parent.getBoundingClientRect();
+       state.sectionBox.top = parentRect.top;
+        state.sectionBox.left = parentRect.left;
+        state.sectionBox.width = parentRect.width;
+        state.sectionBox.height = parentRect.height;
+         state.sectionBox.display= 'block';
+    },
     CLICKS   (state,data ) {
       let e = data.e;
       //let x=data.data;
@@ -115,9 +129,11 @@ const state = {
       state.sections = sections
     },
     addSection(state,data) {console.log(data.sectionId);
-      let sectionData = {"sectionId":1,
-      "name": "Support",
-      "type": "Type1",
+      let sectionData;
+      if(data.sectionId == 5) {
+      sectionData = {"sectionId":1,
+      //"name": "Support",
+      "type": "Type5",
       "widgets": {
         "1": {
           "id": 1,
@@ -128,35 +144,32 @@ const state = {
             "icon": "pe-7s-alarm"
           }
         },
-        "2": {
+      },
+      "attrs": {
+      }
+    }
+  }
+   if(data.sectionId == 6) {
+      sectionData = {"sectionId":1,
+      //"name": "Support",
+      "type": "Type6",
+      "widgets": {
+        "1": {
           "id": 1,
-          "name": "support",
+          "name": "Support",
           "setting": {
-            "title": "bai viet 1",
-            "description": "des 1",
-            "icon": "pe-7s-car"
+            "title": "Mon - Fri / 8:00 - 18:00",
+            "description": "Working Days/Hours!",
+            "icon": "pe-7s-alarm"
           }
         },
-        "3": {
-          "id": 1,
-          "name": "support",
-          "setting": {
-            "title": "Support@posthemes.com",
-            "description": "Orders Support!",
-            "icon": "pe-7s-mail-open-file"
-          }
-        }
       },
       "attrs": {
         "type": 1,
         "content": "xyz",
-        "text1": "aaaaaaaaaaa",
-        "text2": "bbbbbbbb",
-        "text3": "cccccccccc",
-        "backgroundColor": "#fff",
-        "color": "#ea4848"
       }
     }
+  }
     var index
      let sections = state.sections
     sections.forEach(function(p,i){
@@ -184,43 +197,41 @@ const state = {
       console.log('up'+state.currentSectionId);
     },
     down(state) { console.log('down');
-     // console.log(state.sections);
-     // console.log(state.currentSectionId);
+    
      var index
       let sections = state.sections
       sections.forEach(function(p,i){
         if(i == state.currentSectionId){
-          
-        index = state.sections.indexOf(p);//console.log(index);
-       //const nextIndex = index + 1;
-        console.log('ssss'+index);
-//        var tmp = sections[1] 
-      // sections[1] = sections[2] 
-  //     sections[2] = tmp
-
-       // console.log(state.sections.[index]);
-       //  console.log(state.sections[nextIndex]);
-      // var  tmp = state.sections[1] ;
-     //  Vue.set( state.sections,1, state.sections[2] )
-        // Vue.set( state.sections,2, tmp )
-         
-       // Vue.set( state, 'sections', sections )
+          index = state.sections.indexOf(p);
         }
-     })
+      });
+     
       const nextIndex = index + 1;
          var tmp = sections[index] 
-       // sections[index] = sections[nextIndex] 
-         //sections[nextIndex] = tmp
           Vue.set( state.sections,index, sections[nextIndex] )
          Vue.set( state.sections,nextIndex, tmp )
+    },
+    deleteSection(state) { 
+    console.log('deleteSection'+state.currentSectionId);
+     var index
+      let sections = state.sections
+      sections.forEach(function(p,i){
+        if(i == state.currentSectionId){
+          index = state.sections.indexOf(p);
+           sections.splice(index, 1);
+        }
+      });
+     console.log(sections);
+     // Vue.set( state,'sections', sections )
+    },
 
-       console.log(sections);  
-      // Vue.set( state, 'sections', sections )
-    }
  };
  const actions = {
     CLICKS: ({ commit }, id) => {
         commit('CLICKS', id)
+      },
+      hover: ({ commit }, data) => {
+        commit('hover', data)
       },
       loadData({
         commit

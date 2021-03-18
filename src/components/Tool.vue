@@ -1,5 +1,5 @@
 <template>
-<div id="vvveb-builder">
+<div id="vvveb-builder"  v-show="showTool">
    <div id="canvas">
       <div id="iframe-wrapper">
          <div id="iframe-layer">
@@ -31,7 +31,11 @@
       </div>
    </div>
   
-   <div id="right-panel"><div class="component-properties"><ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist"><li class="nav-item content-tab">
+   <div id="right-panel">
+      <div @click="showTool=false" id="close-section-btn" class="btn btn-light btn-sm bg-white btn-sm float-right" contenteditable="true"  ><i class="la la-close" contenteditable="true"></i>
+      </div>
+    <div class="component-properties">
+      <ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist"><li class="nav-item content-tab">
                <a class="nav-link show" data-toggle="tab" href="#content-tab" role="tab" aria-controls="components" aria-selected="false">
                   <i class="la la-lg la-cube"></i>
                   <div><span>Content</span></div>
@@ -52,6 +56,50 @@
          </ul>
 
          <div class="tab-content">
+            <div class="tab-pane fade" id="content-tab" data-section="content" role="tabpanel" aria-labelledby="content-tab">
+                <label class="header" data-header="default" for="header_default">
+                    <span>Paragraph</span>
+                    <div class="header-arrow"></div>
+                </label>
+                <input class="header_check" type="checkbox" checked="true" id="header_default" />
+                <div class="section" data-section="default">
+                    <div class="mb-3 row" data-key="text-align">
+                        <label class="col-sm-4 control-label" for="input-model">Text align</label>
+                        <div class="col-sm-8 input">
+                            <div class="btn-group btn-group-sm btn-group-fullwidth clearfix" role="group">
+                                <input name="text-align" class="btn-check" type="radio" value="" id="rb-95text-align0" checked="true" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="rb-95text-align0" title="None"> <i class="la la-times"></i> </label>
+                                <input name="text-align" class="btn-check" type="radio" value="text-start" id="rb-95text-align1" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="rb-95text-align1" title="text-start"> <i class="la la-align-left"></i> </label>
+                                <input name="text-align" class="btn-check" type="radio" value="text-center" id="rb-95text-align2" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="rb-95text-align2" title="Center"> <i class="la la-align-center"></i> </label>
+                                <input name="text-align" class="btn-check" type="radio" value="text-end" id="rb-95text-align3" autocomplete="off" />
+                                <label class="btn btn-outline-primary" for="rb-95text-align3" title="Right"> <i class="la la-align-right"></i> </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label class="header" data-header="element_header" for="header_element_header">
+                    <span>General</span>
+                    <div class="header-arrow"></div>
+                </label>
+                <input class="header_check" type="checkbox" checked="true" id="header_element_header" />
+                <div class="section" data-section="element_header">
+                    <div class="mb-3 col-sm-6 d-inline-block px-2" data-key="id">
+                        <label class="control-label" for="input-model">Id</label>
+                        <div class="input">
+                            <div><input name="id" type="text" class="form-control" /></div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-sm-6 d-inline-block px-2" data-key="class">
+                        <label class="control-label" for="input-model">Class</label>
+                        <div class="input">
+                            <div><input name="class" type="text" class="form-control" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="tab-pane fade active show" id="style-tab" data-section="style" role="tabpanel" aria-labelledby="style-tab">
                <label class="header" data-header="display_header" for="header_display_header">
                   <span>Display</span>
@@ -616,6 +664,13 @@
                      </div>
                   </div>
                </div>
+            </div>
+
+            <div class="tab-pane fade" id="advanced-tab" data-section="advanced" role="tabpanel" aria-labelledby="advanced-tab">
+                  <div class="alert alert-dismissible fade show alert-info m-3" role="alert" style="">        
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>      
+                     <strong>No advanced properties!</strong><br> This component does not have advanced properties.     
+                  </div>
             </div>
          </div>
       </div>

@@ -54,38 +54,18 @@ new Vue({
   render: h => h(App),
   store,
   mounted() {
-
+    document.addEventListener("mousemove", e => {
+       e.target.setAttribute('contenteditable',true)
+       let parent = e.target.closest(".section");
+       var  sectionId=parent.getAttribute('data-section')
+       this.$store.commit('hover',{'sectionId':sectionId})
+    })
 
     document.addEventListener("mouseover", e => {
-
-
-      //  let m = `x: ${e.clientX} | y: ${e.clientY}`;
-       // console.log(e.target.tagName);
-       // console.log(e.target.getAttribute('data-id'));
-        //console.log(e.target.getAttribute('style'));
-      //  console.log('id: '+e.target.id);
-       // console.log(e.target.style);
-       // console.log(e.target.style.marginTop);
-       // console.log(e.target.tagName);
        e.target.setAttribute('contenteditable',true)
-
-    var editAble = e.target.getAttribute('data-editAble')
-  
-    var data;
-    let parent = e.target.closest(".section");
+       let parent = e.target.closest(".section");
        var  sectionId=parent.getAttribute('data-section')
-    if(editAble == 'true') {
-             console.log(e)
-       data = {'e':e,'isSection':0,'data':{'sectionId':sectionId}} ;
-    }
-    else{
-       data ={'e':e,'isSection':1,'data':{'sectionId':sectionId}}
-    }
-    this.$store.commit('CLICKS',data)
-     console.log(e.target.id)
-     /*e.target.addEventListener('input', function () {
-
-      });*/
+       this.$store.commit('hover',{'sectionId':sectionId})
     })
     document.addEventListener("mouseup", e => {
 
