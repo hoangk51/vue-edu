@@ -1,4 +1,4 @@
-//import axios from "axios";
+import axios from "axios";
 import Vue from 'vue'
 
 const state = {
@@ -130,60 +130,25 @@ const state = {
     },
     addSection(state,data) {console.log(data.sectionId);
       let sectionData;
-      if(data.sectionId == 5) {
-      sectionData = {"sectionId":1,
-      //"name": "Support",
-      "type": "Type5",
-      "widgets": {
-        "1": {
-          "id": 1,
-          "name": "Support",
-          "setting": {
-            "title": "Mon - Fri / 8:00 - 18:00",
-            "description": "Working Days/Hours!",
-            "icon": "pe-7s-alarm"
-          }
-        },
-      },
-      "attrs": {
-      }
-    }
-  }
-   if(data.sectionId == 6) {
-      sectionData = {"sectionId":1,
-      //"name": "Support",
-      "type": "Type6",
-      "widgets": {
-        "1": {
-          "id": 1,
-          "name": "Support",
-          "setting": {
-            "title": "Mon - Fri / 8:00 - 18:00",
-            "description": "Working Days/Hours!",
-            "icon": "pe-7s-alarm"
-          }
-        },
-      },
-      "attrs": {
-        "type": 1,
-        "content": "xyz",
-      }
-    }
-  }
-    var index
-     let sections = state.sections
-    sections.forEach(function(p,i){
-        if(i == state.currentSectionId){
-        index = state.sections.indexOf(p) + 1;
-        /* const preIndex = index - 1;
-         Vue.set( state.sections,index, state.sections[preIndex] )
-         Vue.set( state.sections,preIndex, p )*/
-        }
-     });
-     sections.splice(index, 0, sectionData);
-      Vue.set( state,'sections', sections )
+      var url = "http://edu.lar71.test/section-detail/"+ data.sectionId;
+      axios.get(url).then(response => {console.log(response.data);
+        sectionData = response.data
+        var index
+        let sections = state.sections
+       sections.forEach(function(p,i){
+           if(i == state.currentSectionId){
+           index = state.sections.indexOf(p) + 1;
+           /* const preIndex = index - 1;
+            Vue.set( state.sections,index, state.sections[preIndex] )
+            Vue.set( state.sections,preIndex, p )*/
+           }
+        });
+        sections.splice(index, 0, sectionData);
+         Vue.set( state,'sections', sections )
+         console.log(state.sections);
+      });
 
-      console.log(state.sections);
+
     },
     up(state) {
       state.sections.forEach(function(p,i){
@@ -197,7 +162,7 @@ const state = {
       console.log('up'+state.currentSectionId);
     },
     down(state) { console.log('down');
-    
+
      var index
       let sections = state.sections
       sections.forEach(function(p,i){
@@ -205,13 +170,13 @@ const state = {
           index = state.sections.indexOf(p);
         }
       });
-     
+
       const nextIndex = index + 1;
-         var tmp = sections[index] 
+         var tmp = sections[index]
           Vue.set( state.sections,index, sections[nextIndex] )
          Vue.set( state.sections,nextIndex, tmp )
     },
-    deleteSection(state) { 
+    deleteSection(state) {
     console.log('deleteSection'+state.currentSectionId);
      var index
       let sections = state.sections
