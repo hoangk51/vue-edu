@@ -1,5 +1,5 @@
 <template>
-<div id="vvveb-builder"  v-show="showTool">
+<div id="vvveb-builder" class="tool"  v-show="showTool">
    <div id="canvas">
       <div id="iframe-wrapper">
          <div id="iframe-layer">

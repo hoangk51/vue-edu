@@ -1,6 +1,6 @@
 <template>
 
-<div id="vvveb-builder">
+<div id="vvveb-builder" class="sectiontool">
    <div id="canvas">
       <div id="iframe-wrapper">
          <div id="iframe-layer" >

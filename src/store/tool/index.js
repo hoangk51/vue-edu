@@ -206,7 +206,7 @@ const state = {
   "widgets": [
     {"sectionId":1,
       "name": "Support",
-      "type": "Type1",
+      "type": "Type2",
       "widgets": {
         "1": {
           "id": 1,
@@ -248,7 +248,7 @@ const state = {
     },
     {"sectionId":2,
       "name": "Hero",
-      "type": "Type1",
+      "type": "Type3",
       "css": {
         "h2": {
           "backgroundColor": "#3498db",
@@ -414,6 +414,10 @@ const state = {
         "content": "abc",
         "backgroundColor": "#ea4848"
       }
+    },
+    {
+      "sectionId":4,
+      "type": "Type5",
     },
   ]
 };
