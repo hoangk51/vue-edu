@@ -5,7 +5,7 @@
         :sectionIndex="i"
         :key="'A'+ i"
         v-bind:is="section.type"
-       
+        :css="section.css"
       ></component>
       <Footer />
       <Tool v-if="isShowTool" />

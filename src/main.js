@@ -54,7 +54,7 @@ new Vue({
   render: h => h(App),
   store,
   mounted() {
-    document.addEventListener("mousemove", e => {
+   /* document.addEventListener("mousemove", e => {
        e.target.setAttribute('contenteditable',true)
        let parent = e.target.closest(".section");
        var  sectionId=parent.getAttribute('data-section')
@@ -66,7 +66,7 @@ new Vue({
        let parent = e.target.closest(".section");
        var  sectionId=parent.getAttribute('data-section')
        this.$store.commit('hover',{'sectionId':sectionId})
-    })
+    })*/
     document.addEventListener("mouseup", e => {
 
 

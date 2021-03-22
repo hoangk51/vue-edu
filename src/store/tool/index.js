@@ -96,8 +96,8 @@ const state = {
     changeValue (state , data){
       console.log(data)
      // var widgetId = e.target.getAttribute('widget-id')
-
-     var parent = state.currentNode.target.closest(".parent");
+     console.log('changeValue');
+     var parent = state.currentNode.target.closest(".section");
     console.log(parent)
      var  sectionId=parent.getAttribute('data-section')
       console.log(sectionId)
@@ -259,6 +259,9 @@ const state = {
         },
         "h2Text": {
           "backgroundColor": "#3498db"
+        },
+        "span":{
+           "marginTop": "12px",
         }
       },
       "widgets": {

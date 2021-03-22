@@ -682,11 +682,11 @@
 <script>
 import store from '../store.js'
 import { mapGetters } from 'vuex'
-/*
+
 import SelectBox from "@/components/input/SelectBox.vue";
 import TextInput from "@/components/input/TextInput.vue";
 import Color from "@/components/input/Color.vue";
-*/
+
 export default {
   name: 'Tool',
 
@@ -698,7 +698,7 @@ export default {
   },
   props:['section'],
   components: {
-   // SelectBox,TextInput,Color
+    SelectBox,TextInput,Color
   },
   computed: {
      ...mapGetters({
@@ -763,7 +763,7 @@ export default {
          property.value = value
       });
 
-      //console.log(arr)
+      console.log(arr)
       return arr
     },
     cssVars(){

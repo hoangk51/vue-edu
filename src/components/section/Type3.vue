@@ -13,7 +13,7 @@
         <div class="py-20 bg-gray-50 radius-for-skewed">
           <div class="container mx-auto px-4">
             <div class="max-w-xl mx-auto mb-10 text-center">
-              <span  class="text-green-600 font-bold" data-editAble=true>Dolor sit amet consectutar</span>
+              <span   data-subwidget="span" :style="cssSpan" class="text-green-600 font-bold" data-editAble=true>Dolor sit amet consectutar</span>
               <h2 class="text-4xl lg:text-5xl font-bold font-heading">Check our awesome team members</h2>
             </div>
             <div class="flex flex-wrap">
@@ -80,8 +80,8 @@ export default {
   name: 'Type3',
   props: ["widget", "widgetIndex", "sectionIndex", "css"],
   computed: {
-    /*cssSpan() {
-      let css = this.$props.css.cssSpan;
+    cssSpan() {
+      let css = this.$props.css.span;
       let newCss={}
       let list = ['backgroundColor','color','fontSize','fontWeight','marginTop','marginBottom','marginRight','marginLeft']
        list.forEach(function (property) {
@@ -96,7 +96,7 @@ export default {
       console.log(newCss);
       return newCss;
     },
-    cssp() {
+    /*cssp() {
       let css = this.$props.css.p;
       console.log("cssp");
       return {
