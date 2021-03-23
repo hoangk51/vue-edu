@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import JQuery from 'jquery'
 import { store } from "./store.js";
+
 /*
 function getDomPath(el) {
   if (!el) {

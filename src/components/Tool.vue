@@ -32,7 +32,7 @@
    </div>
   
    <div id="right-panel">
-      <div @click="showTool=false" id="close-section-btn" class="btn btn-light btn-sm bg-white btn-sm float-right" contenteditable="true"  ><i class="la la-close" contenteditable="true"></i>
+      <div @click="closeTool" id="close-section-btn" class="btn btn-light btn-sm bg-white btn-sm float-right" contenteditable="true"  ><i class="la la-close" contenteditable="true"></i>
       </div>
     <div class="component-properties">
       <ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist"><li class="nav-item content-tab">
@@ -107,8 +107,8 @@
                </label>
                <input class="header_check" type="checkbox" checked="true" id="header_display_header">
                <div class="section" data-section="display_header">
-                  <component   v-for="(item,i) in inputs"  :key="'A'+ i" v-bind:is="item.type"  :data=item >
-                  </component>
+                <!--   <component   v-for="(item,i) in inputs"  :key="'A'+ i" v-bind:is="item.type"  :data=item >
+                  </component> -->
                </div>
                <label class="header" data-header="typography_header" for="header_typography_header">
                   <span>Typography</span>
@@ -667,9 +667,13 @@
             </div>
 
             <div class="tab-pane fade" id="advanced-tab" data-section="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-                  <div class="alert alert-dismissible fade show alert-info m-3" role="alert" style="">        
+                  <div class="alert alert-dismissible fade show alert-info m-3" role="alert" style="">  
+                    <TextInput :data="{value:this.style.marginTop,name:'marginTop'}" /> 
+                    <Color :data="{value:this.style.color,name:'color'}" /> 
+                         
                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>      
-                     <strong>No advanced properties!</strong><br> This component does not have advanced properties.     
+
+                     <!-- <strong>No advanced properties!</strong><br> This component does not have advanced properties.     --> 
                   </div>
             </div>
          </div>
@@ -694,6 +698,7 @@ export default {
      showTool: store.state.tool.showTool,
      selectBox: store.state.tool.selectBox,
      topVar: store.state.tool.top,
+     style :store.state.tool.currentNode.target.style
    }
   },
   props:['section'],
@@ -707,7 +712,7 @@ export default {
       topwidth: 'width',
       height: 'height',
     }),
-    inputs() {
+    /*inputs() {
        var arr = [{name:'marginLeft',type:'TextInput'},
                   {name:'marginTop',type:'TextInput'},
                   {name:'marginRight',type:'TextInput'},
@@ -717,14 +722,67 @@ export default {
                   {name:'fontWeight',type:'TextInput'},
                    {name:'fontSize',type:'TextInput'},
                   ]
-      //console.log(store.state)
-       //let isSection = store.state.tool.isSection
-       //console.log(isSection)
-      // if(isSection == 1) return arr
-       console.log(33333333)
       let style = store.state.tool.currentNode.target.style
 
        var rgbToHex = function (color) {
+         color = ""+ color;
+         if (!color || color.indexOf("rgb") < 0) {
+            return "";
+         }
+
+         if (color.charAt(0) == "#") {
+            return color;
+         }
+
+         var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
+            r = parseInt(nums[2], 10).toString(16),
+            g = parseInt(nums[3], 10).toString(16),
+            b = parseInt(nums[4], 10).toString(16);
+
+         return "#"+ (
+            (r.length == 1 ? "0"+ r : r) +
+            (g.length == 1 ? "0"+ g : g) +
+            (b.length == 1 ? "0"+ b : b)
+         );
+      }
+     // console.log(123);
+       arr.forEach(function (property) {
+
+          var name = property.name;
+          var value
+
+          if(property.type=='Color'){
+             // console.log('color'+ style[name]);
+             value = rgbToHex(style[name])
+             //console.log(value);
+          }else{
+             value = style[name]
+          }
+         property.value = value
+      });
+
+      console.log(arr)
+      return arr
+    },*/
+    cssVars(){
+     //  console.log(555)
+       let style = {
+         'top':this.selectBox.top+'px',
+         'width':this.selectBox.width+'px',
+         'height':this.selectBox.height+'px',
+         'left':this.selectBox.left+'px',
+        // fontWeight: 400,
+         display:this.selectBox.display,
+         color: 'red',
+        // fontSize: '13px'
+       }
+       console.log(style)
+
+       return style
+    }
+  },
+  methods: {
+    rgbToHex(color) {
           //console.log('color:'+color)
          // if (!color) return "";
          color = ""+ color;
@@ -746,44 +804,12 @@ export default {
             (g.length == 1 ? "0"+ g : g) +
             (b.length == 1 ? "0"+ b : b)
          );
-      }
-      console.log(123);
-       arr.forEach(function (property) {
-
-          var name = property.name;
-          var value
-
-          if(property.type=='Color'){
-              console.log('color'+ style[name]);
-             value = rgbToHex(style[name])
-             console.log(value);
-          }else{
-             value = style[name]
-          }
-         property.value = value
-      });
-
-      console.log(arr)
-      return arr
-    },
-    cssVars(){
-     //  console.log(555)
-       let style = {
-         'top':this.selectBox.top+'px',
-         'width':this.selectBox.width+'px',
-         'height':this.selectBox.height+'px',
-         'left':this.selectBox.left+'px',
-        // fontWeight: 400,
-         display:this.selectBox.display,
-         color: 'red',
-        // fontSize: '13px'
-       }
-       console.log(style)
-
-       return style
+      },
+    closeTool(){
+       store.state.tool.showTool = false
+      // Vue.set( state,'showTool', true )
+     // this.showTool = false
     }
-  },
-  methods: {
   }
 }
 </script>

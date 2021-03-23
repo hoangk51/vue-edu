@@ -81,6 +81,7 @@ const state = {
           console.log(rect)
         }else{
           state.showTool = true,
+         // Vue.set( state,'showTool', true )
           state.selectBox.display= 'block';
           let rect = e.target.getBoundingClientRect();
          // console.log(rect)

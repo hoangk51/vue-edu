@@ -76,12 +76,20 @@
     
 </template>
 <script>
+
+import mixin from "@/components/mixin.js"
+
+
 export default {
   name: 'Type3',
+  mixins: [mixin],
   props: ["widget", "widgetIndex", "sectionIndex", "css"],
   computed: {
     cssSpan() {
-      let css = this.$props.css.span;
+       // console.log('cssSpan');
+       // this.displayMessage()  
+        return this.$props.css.span
+     /* let css = this.$props.css.span;
       let newCss={}
       let list = ['backgroundColor','color','fontSize','fontWeight','marginTop','marginBottom','marginRight','marginLeft']
        list.forEach(function (property) {
@@ -91,10 +99,11 @@ export default {
          }else{
            newCss[property]=""
          }
-
+         if(!css[property]){  newCss[property]="" }
        })
-      console.log(newCss);
-      return newCss;
+       return css;
+     // console.log(newCss);
+      return newCss;*/
     },
     /*cssp() {
       let css = this.$props.css.p;
