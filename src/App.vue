@@ -8,7 +8,8 @@
         :css="section.css"
       ></component>
       <Footer />
-      <Tool v-if="isShowTool" />
+     <!--  <TextTool  v-if="isShowTool" /> -->
+     <component  v-bind:is="tool"  v-if="isShowTool"></component> 
       <Sectiontool v-if="isShowSectiontool" />
   </div>
 </template>
@@ -39,7 +40,19 @@ import store from "./store.js";
         components[name] = component.default || component
         return components
     }, {}) 
-    
+
+/* const requireContext1 = require.context('./components/tool/', true, /[A-Z]\w+\.vue$/)
+
+ components = requireContext1.keys()
+    .map(file =>
+        [file.replace(/(^.\/)|(\.vue$)/g, ''), requireContext(file)]
+    )
+    .reduce((components, [name, component]) => {
+        components[name] = component.default || component
+        return components
+    }, {}) 
+*/
+
 /*req.keys().forEach(filePath => {
   const component = components(filePath);
     const componentName = path.basename(filePath, '.vue');
@@ -61,11 +74,17 @@ import store from "./store.js";
      components[section.type] = () => import('./components/section/'+section.type+'.vue')
   })*/
 
+
     components['Header'] = () => import(`./components/Header.vue`)
     components['Footer'] = () => import(`./components/Footer.vue`)
     components['Tool'] = () => import(`./components/Tool.vue`)
     components['Sectiontool'] = () => import(`./components/Sectiontool.vue`)
    components['Type5'] = () =>   import('./components/section/Type5.vue')
+   components['TextTool'] = () => import(`./components/tool/TextTool.vue`)
+     components['ButtonTool'] = () => import(`./components/tool/ButtonTool.vue`)
+     components['ATool'] = () => import(`./components/tool/ATool.vue`)
+
+
  //components['Type3'] = () => import(`./components/section/Type3.vue`)
  //components['Type4'] = () => import(`./components/section/Type4.vue`)
   /*function loadComponent(componentType){
@@ -106,6 +125,10 @@ export default {
   },
 
   computed: {
+    tool(){
+      console.log(store.state.tool.currentTool)
+      return store.state.tool.currentTool+'Tool'
+    },
     import (componentType) {console.log(componentType);
       return 0
        // return import(`./components/section/${componentType}.vue`) 

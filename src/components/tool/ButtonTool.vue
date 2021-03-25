@@ -35,6 +35,7 @@
       <div @click="showTool=false" id="close-section-btn" class="btn btn-light btn-sm bg-white btn-sm float-right" contenteditable="true"  ><i class="la la-close" contenteditable="true"></i>
       </div>
     <div class="component-properties">
+      Button
       <ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist"><li class="nav-item content-tab">
                <a class="nav-link show" data-toggle="tab" href="#content-tab" role="tab" aria-controls="components" aria-selected="false">
                   <i class="la la-lg la-cube"></i>
@@ -107,7 +108,7 @@
                </label>
                <input class="header_check" type="checkbox" checked="true" id="header_display_header">
                <div class="section" data-section="display_header">
-                  <TextInput :data="{value:this.style.marginTop,name:'marginTop'}" /> 
+                  <TextInput :data="{value:this.style.marginTop,name:'marginTop'}" />  
                     <Color :data="{value:this.style.color,name:'color'}" /> 
                </div>
                <label class="header" data-header="typography_header" for="header_typography_header">
@@ -335,7 +336,7 @@
                </label>
                <input class="header_check" type="checkbox" id="header_margins_header">
                <div class="section" data-section="margins_header">
-                   <TextInput/>
+                  
                   <SelectBox>  </SelectBox>
 
                   <div class="form-group  col-sm-6 d-inline-block " data-key="margin-top">
@@ -680,15 +681,15 @@
 </template>
 
 <script>
-import store from '../store.js'
+import store from '../../store.js'
 import { mapGetters } from 'vuex'
-/*
+
 import SelectBox from "@/components/input/SelectBox.vue";
 import TextInput from "@/components/input/TextInput.vue";
 import Color from "@/components/input/Color.vue";
-*/
+
 export default {
-  name: 'Tool',
+  name: 'ButtonTool',
 
   data(){return {
      showTool: store.state.tool.showTool,
@@ -700,7 +701,7 @@ export default {
   },
   props:['section'],
   components: {
-   // SelectBox,TextInput,Color
+    SelectBox,TextInput,Color
   },
   computed: {
      ...mapGetters({

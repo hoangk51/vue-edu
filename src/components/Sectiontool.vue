@@ -236,62 +236,7 @@ export default {
       topwidth: 'width',
       height: 'height',
     }),
-    inputs() {
-       var arr = [{name:'marginLeft',type:'TextInput'},
-                  {name:'marginTop',type:'TextInput'},
-                  {name:'marginRight',type:'TextInput'},
-                  {name:'marginBottom',type:'TextInput'},
-                  {name:'backgroundColor',type:'Color'},
-                   {name:'color',type:'Color'},
-                  {name:'fontWeight',type:'TextInput'},
-                   {name:'fontSize',type:'TextInput'},
-                  ]
-      //console.log(store.state)
-       console.log(33333333)
-      let style = store.state.tool.currentNode.target.style
-
-       var rgbToHex = function (color) {
-          //console.log('color:'+color)
-         // if (!color) return "";
-         color = ""+ color;
-         if (!color || color.indexOf("rgb") < 0) {
-            return "";
-         }
-
-         if (color.charAt(0) == "#") {
-            return color;
-         }
-
-         var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
-            r = parseInt(nums[2], 10).toString(16),
-            g = parseInt(nums[3], 10).toString(16),
-            b = parseInt(nums[4], 10).toString(16);
-
-         return "#"+ (
-            (r.length == 1 ? "0"+ r : r) +
-            (g.length == 1 ? "0"+ g : g) +
-            (b.length == 1 ? "0"+ b : b)
-         );
-      }
-      console.log(123);
-       arr.forEach(function (property) {
-
-          var name = property.name;
-          var value
-
-          if(property.type=='Color'){
-              console.log('color'+ style[name]);
-             value = rgbToHex(style[name])
-             console.log(value);
-          }else{
-             value = style[name]
-          }
-         property.value = value
-      });
-
-      //console.log(arr)
-      return arr
-    },
+   
     cssVars(){
      //  console.log(555)
        let style = {

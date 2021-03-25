@@ -17,7 +17,7 @@
               <h2 class="mb-2 text-4xl lg:text-5xl font-bold font-heading">Choose your best plan</h2>
               <p class="mb-6 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <div class="inline-block py-1 px-1 bg-white rounded-lg">
-                <button class="mr-1 text-sm py-2 px-4 text-gray-500 hover:text-gray-900 font-bold">Monthly</button>
+                <button data-tool="Button"  data-editAble="true" class="mr-1 text-sm py-2 px-4 text-gray-500 hover:text-gray-900 font-bold">Monthly</button>
                 <button class="text-sm py-2 px-4 text-gray-900 bg-gray-50 rounded-lg shadow font-bold">Yearly</button>
               </div>
             </div>
@@ -59,7 +59,7 @@
                       <span>Suspendisse bibendum</span>
                     </li>
                   </ul>
-                  <a class="inline-block text-center py-2 px-4 w-full rounded-l-xl rounded-t-xl bg-green-600 hover:bg-green-700 text-white font-bold leading-loose transition duration-200" href="#">Get Started</a>
+                  <a data-tool="A"  data-editAble="true" class="inline-block text-center py-2 px-4 w-full rounded-l-xl rounded-t-xl bg-green-600 hover:bg-green-700 text-white font-bold leading-loose transition duration-200" >Get Started</a>
                 </div>
               </div>
               <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8 lg:mb-0">

@@ -13,7 +13,7 @@
         <div class="py-20 bg-gray-50 radius-for-skewed">
           <div class="container mx-auto px-4">
             <div class="max-w-xl mx-auto mb-10 text-center">
-              <span   data-subwidget="span" :style="cssSpan" class="text-green-600 font-bold" data-editAble=true>Dolor sit amet consectutar</span>
+              <span  data-tool="Text"  data-editAble="true" data-subwidget="span" :style="cssSpan" class="text-green-600 font-bold">Dolor sit amet consectutar</span>
               <h2 class="text-4xl lg:text-5xl font-bold font-heading">Check our awesome team members</h2>
             </div>
             <div class="flex flex-wrap">

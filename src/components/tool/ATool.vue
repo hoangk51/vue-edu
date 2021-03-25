@@ -32,9 +32,10 @@
    </div>
   
    <div id="right-panel">
-      <div @click="closeTool" id="close-section-btn" class="btn btn-light btn-sm bg-white btn-sm float-right" contenteditable="true"  ><i class="la la-close" contenteditable="true"></i>
+      <div @click="showTool=false" id="close-section-btn" class="btn btn-light btn-sm bg-white btn-sm float-right" contenteditable="true"  ><i class="la la-close" contenteditable="true"></i>
       </div>
     <div class="component-properties">
+        A tag 
       <ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist"><li class="nav-item content-tab">
                <a class="nav-link show" data-toggle="tab" href="#content-tab" role="tab" aria-controls="components" aria-selected="false">
                   <i class="la la-lg la-cube"></i>
@@ -107,8 +108,8 @@
                </label>
                <input class="header_check" type="checkbox" checked="true" id="header_display_header">
                <div class="section" data-section="display_header">
-                <!--   <component   v-for="(item,i) in inputs"  :key="'A'+ i" v-bind:is="item.type"  :data=item >
-                  </component> -->
+                   <TextInput :data="{value:this.style.marginTop,name:'marginTop'}" /> 
+                    <Color :data="{value:this.style.color,name:'color'}" /> 
                </div>
                <label class="header" data-header="typography_header" for="header_typography_header">
                   <span>Typography</span>
@@ -335,9 +336,9 @@
                </label>
                <input class="header_check" type="checkbox" id="header_margins_header">
                <div class="section" data-section="margins_header">
-                   <!-- <TextInput/>
+                   <TextInput :data="{value:this.style.marginTop,name:'marginTop'}" />
                   <SelectBox>  </SelectBox>
- -->
+
                   <div class="form-group  col-sm-6 d-inline-block " data-key="margin-top">
                      <label class=" control-label" for="input-model">Top</label>
                      <div class=" input">
@@ -667,13 +668,9 @@
             </div>
 
             <div class="tab-pane fade" id="advanced-tab" data-section="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-                  <div class="alert alert-dismissible fade show alert-info m-3" role="alert" style="">  
-                    <!-- <TextInput :data="{value:this.style.marginTop,name:'marginTop'}" />  -->
-                    <Color :data="{value:this.style.color,name:'color'}" /> 
-                         
+                  <div class="alert alert-dismissible fade show alert-info m-3" role="alert" style="">        
                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>      
-
-                     <!-- <strong>No advanced properties!</strong><br> This component does not have advanced properties.     --> 
+                     <strong>No advanced properties!</strong><br> This component does not have advanced properties.     
                   </div>
             </div>
          </div>
@@ -684,26 +681,27 @@
 </template>
 
 <script>
-import store from '../store.js'
+import store from '../../store.js'
 import { mapGetters } from 'vuex'
 
-/*import SelectBox from "@/components/input/SelectBox.vue";
+import SelectBox from "@/components/input/SelectBox.vue";
 import TextInput from "@/components/input/TextInput.vue";
-import Color from "@/components/input/Color.vue";*/
+import Color from "@/components/input/Color.vue";
 
 export default {
-  name: 'Tool',
+  name: 'ATool',
 
   data(){return {
      showTool: store.state.tool.showTool,
      selectBox: store.state.tool.selectBox,
      topVar: store.state.tool.top,
-     style :store.state.tool.currentNode.target.style
+    style :store.state.tool.currentNode.target.style
+
    }
   },
   props:['section'],
   components: {
-   /* SelectBox,TextInput,Color*/
+    SelectBox,TextInput,Color
   },
   computed: {
      ...mapGetters({
@@ -712,58 +710,6 @@ export default {
       topwidth: 'width',
       height: 'height',
     }),
-    /*inputs() {
-       var arr = [{name:'marginLeft',type:'TextInput'},
-                  {name:'marginTop',type:'TextInput'},
-                  {name:'marginRight',type:'TextInput'},
-                  {name:'marginBottom',type:'TextInput'},
-                  {name:'backgroundColor',type:'Color'},
-                   {name:'color',type:'Color'},
-                  {name:'fontWeight',type:'TextInput'},
-                   {name:'fontSize',type:'TextInput'},
-                  ]
-      let style = store.state.tool.currentNode.target.style
-
-       var rgbToHex = function (color) {
-         color = ""+ color;
-         if (!color || color.indexOf("rgb") < 0) {
-            return "";
-         }
-
-         if (color.charAt(0) == "#") {
-            return color;
-         }
-
-         var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
-            r = parseInt(nums[2], 10).toString(16),
-            g = parseInt(nums[3], 10).toString(16),
-            b = parseInt(nums[4], 10).toString(16);
-
-         return "#"+ (
-            (r.length == 1 ? "0"+ r : r) +
-            (g.length == 1 ? "0"+ g : g) +
-            (b.length == 1 ? "0"+ b : b)
-         );
-      }
-     // console.log(123);
-       arr.forEach(function (property) {
-
-          var name = property.name;
-          var value
-
-          if(property.type=='Color'){
-             // console.log('color'+ style[name]);
-             value = rgbToHex(style[name])
-             //console.log(value);
-          }else{
-             value = style[name]
-          }
-         property.value = value
-      });
-
-      console.log(arr)
-      return arr
-    },*/
     cssVars(){
      //  console.log(555)
        let style = {
@@ -782,34 +728,6 @@ export default {
     }
   },
   methods: {
-    rgbToHex(color) {
-          //console.log('color:'+color)
-         // if (!color) return "";
-         color = ""+ color;
-         if (!color || color.indexOf("rgb") < 0) {
-            return "";
-         }
-
-         if (color.charAt(0) == "#") {
-            return color;
-         }
-
-         var nums = /(.*?)rgb\((\d+),\s*(\d+),\s*(\d+)\)/i.exec(color),
-            r = parseInt(nums[2], 10).toString(16),
-            g = parseInt(nums[3], 10).toString(16),
-            b = parseInt(nums[4], 10).toString(16);
-
-         return "#"+ (
-            (r.length == 1 ? "0"+ r : r) +
-            (g.length == 1 ? "0"+ g : g) +
-            (b.length == 1 ? "0"+ b : b)
-         );
-      },
-    closeTool(){
-       store.state.tool.showTool = false
-      // Vue.set( state,'showTool', true )
-     // this.showTool = false
-    }
   }
 }
 </script>

@@ -4,6 +4,7 @@ import Vue from 'vue'
 const state = {
    sections:[],
     currentNode:{},
+    currentTool:'tool',
     showTool:false,
     showSectiontool:false,
     isSection:false,
@@ -89,6 +90,10 @@ const state = {
           state.selectBox.left = rect.left;
           state.selectBox.width = rect.width;
           state.selectBox.height = rect.height;
+          //tool
+          var tool = e.target.getAttribute('data-tool')
+          state.currentTool = tool
+          //console.log('tool'+tool);
         }
       // console.log(state.selectBox)
         state.currentNode = e
